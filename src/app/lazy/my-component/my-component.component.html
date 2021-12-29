@@ -1,0 +1,59 @@
+
+<div class="g-con">
+    <img src="assets/friyay.gif" height="400" width="400" />
+    <img src="assets/friyay.gif" height="400" width="400" />
+    <img src="assets/friyay.gif" height="400" width="400" />
+    <img src="assets/friyay.gif" height="400" width="400" />
+    <img src="assets/friyay.gif" height="400" width="400" />
+    <img src="assets/friyay.gif" height="400" width="400" />
+    <img src="assets/friyay.gif" height="400" width="400" />
+    <img src="assets/friyay.gif" height="400" width="400" />
+    <img src="assets/friyay.gif" height="400" width="400" />
+    <img src="assets/friyay.gif" height="400" width="400" />
+    <img src="assets/friyay.gif" height="400" width="400" />
+    <img src="assets/friyay.gif" height="400" width="400" />
+    <img src="assets/friyay.gif" height="400" width="400" />
+    <img src="assets/friyay.gif" height="400" width="400" />
+    <img src="assets/friyay.gif" height="400" width="400" />
+    <img src="assets/friyay.gif" height="400" width="400" />
+    <img src="assets/friyay.gif" height="400" width="400" />
+    <img src="assets/friyay.gif" height="400" width="400" />
+    <img src="assets/friyay.gif" height="400" width="400" />
+    <img src="assets/friyay.gif" height="400" width="400" />
+    <img src="assets/friyay.gif" height="400" width="400" />
+    <img src="assets/friyay.gif" height="400" width="400" />
+    <img src="assets/friyay.gif" height="400" width="400" />
+    <img src="assets/friyay.gif" height="400" width="400" />
+    
+
+</div>
+   
+<form
+[formGroup]="simpleForm"
+style="margin:50px;"
+fxLayout="column"
+fxLayoutGap="20px"
+fxLayoutAlign="space-between center"
+(submit)="submitForm()"
+>
+<mat-form-field appearance="fill">
+<mat-label>Enter your Name</mat-label>
+<input matInput placeholder="John" formControlName="name" required/>
+<mat-error *ngIf="name?.invalid">{{ getNameErrorMessage() }}</mat-error>
+</mat-form-field>
+<mat-form-field appearance="fill">
+<mat-label>Enter your email</mat-label>
+<input
+        matInput
+        placeholder="john@example.com"
+        formControlName="email"
+        required
+/>
+<mat-error *ngIf="email?.invalid">{{
+    getEmailErrorMessage()
+    }}</mat-error>
+</mat-form-field>
+<button type="submit" mat-raised-button color="accent">
+{{ buttonTitle }}
+</button>
+</form>

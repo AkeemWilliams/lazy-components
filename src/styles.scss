@@ -1,1 +1,90 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+*{
+    box-sizing: border-box;
+}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; font-size: 16px; line-height: 1.7;}
+
+
+h1,h2,h3,h4,h5,h6{
+    font-weight: 400;
+}
+
+.container{
+    max-width: 75vw;
+    margin: 0 auto 0;
+}
+nav{
+    display:flex;
+    justify-content: center;
+    background-color: whitesmoke;
+    box-shadow: 0 1px 3px 0 rgb(214, 214, 214);
+    margin: 0 0 60px;
+    position: sticky;
+    width: 100%;
+    top: 0;
+
+}
+.code-block {
+    background-color: #2e2e2e;
+    border: 1px solid rgb(206, 206, 206);
+    display: block;
+    padding: 20px;
+    color: rgb(191, 117, 201);
+    text-align: left;
+    margin:20px 0;
+}
+
+.detailed-code-block {
+    background-color: #2e2e2e;
+    border: 1px solid rgb(206, 206, 206);
+    display: block;
+    padding: 20px;
+    text-align: left;
+    color: #fff;
+    margin:20px 0;
+    .com{
+        color: rgb(156, 156, 156);
+    }
+    .key{
+        color: lightblue;
+    }
+    .func{
+        color: rgb(74, 133, 243);
+    }
+    .met{
+        color: rgb(255, 255, 176);
+    }
+    .str{
+        color: rgb(221, 162, 114);
+
+    }
+    .compon{
+        color:rgb(23, 194, 185);
+
+    }
+    .arr{
+        color: rgb(233, 207, 60);
+
+    }
+    .ob{
+        color: rgb(216, 63, 236);
+    }
+    .imp{
+        color: rgb(199, 125, 209);
+    }
+    .cons{
+        color: rgb(33, 114, 207);
+    }
+}
+pre{
+    display: inline;
+
+    code{
+
+        padding: 0 5px;
+        color: blueviolet;
+
+    }
+}

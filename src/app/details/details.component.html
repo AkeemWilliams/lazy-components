@@ -1,0 +1,58 @@
+<div class="container">
+
+    <article>
+        <h2>Angular Routerless Lazy Loading</h2>
+
+        Angulars current iteration of their rendering engine is called Ivy. It's been around since angular 8 as a preview version and has become standard since Angular 9. Ivy helps to compile components more independent of each other, and any Ivy component can be lazy loaded. This will allow any component to lazy load without the routing module. We can use this feature by enableing Ivy in our tsconfig.json in our angular compiler options.
+        <br><br>
+<div class="code-block"><code><pre>"angularCompilerOptions":&#123;
+   "enableIvy": true
+}</pre></code></div>
+<br>
+This is all we need to get Ivy enable in our app.
+
+<p>We can then proceed to create the component we would like to lazy load independant of the router. There's nothing different here from the usual process. The only difference here is that we are not specifically declaring the app aside from using a template reference to where we want the app to load.</p>
+<br>
+<div class="code-block"><code><pre>&lt;ng-template #myComponent&gt;&lt;/ng-template&gt;
+</pre></code></div>
+<br>
+Where we place the reference is where we add the rest of our implementation to lazy load the component.
+We will need to utilize the <pre><code>@ViewChild</code></pre> decorator. 
+
+<div class="code-block"><code><pre>@ViewChild("myComponent", &#123; read: ViewContainerRef });
+myComponent!: ViewContainerRef;
+</pre></code></div>
+<br>When determining where we want to load our lazy component we would use this property decorator in that part of the app. What this does is allows the change detector to look for the first element in the view DOM that matches the selector. If the view DOM changes, and there’s a new child selector that matches, then the property is updated. This gets us a reference to the element that contains the rendered component.
+<br>
+
+<br>
+<pre><code>@ViewChild</code></pre> can take a <pre><code>selector</code></pre> we want to use for querying, a <pre><code>read</code></pre>parameter that is used to read a different token from the queried elements and a <pre><code>static</code></pre> parameter which by default is set to false to query results after change detection. If set to true it will resolve before change detection occurs.
+
+<br><br>
+Lastly, we can the load the component through importing it and adding it to the container we are referencing it with.
+
+
+
+
+<div class="detailed-code-block"><code><span class="func">async</span> <span class="met"> load()</span> &#123;
+    <br><span class="func">const</span> <span class="key">&#123;</span> <span class="compon">MyComponentComponent</span> <span class="key">}</span> <span> =</span> <span class="ob"> await</span> <span class="func"> import</span><span class="key">(</span><span class="str">&quot;../lazy/my-component/my-component.component&quot;</span><span class="key">);</span>    <pre>
+
+ 
+<span class="func">this</span><span style="color: #f8f8f2">.</span><span class="key">myComponent</span><span style="color: #f8f8f2">.</span><span class="met">clear</span><span class="key">();</span>
+<span class="func">this</span><span style="color: #f8f8f2">.</span><span class="key">myComponent</span><span style="color: #f8f8f2">.</span><span class="met">createComponent</span><span class="key">(</span><span class="compon">MyComponentComponent</span><span class="key">);
+</span><span>}</span></pre>
+
+    </code></div>
+Writing this in the host component:
+<ol>
+    <li>Provides the component we want to load.</li>
+    <li>The <pre><code>.clear()</code></pre> method on the <pre><code>ViewContainerRef</code></pre> destroys all views in that container</li>
+    <li>Then the<pre><code>createComponent()</code></pre> method will instantiate a single component and insert its host view into this container.</li>
+</ol>
+<br><br>
+
+
+
+</article>
+
+</div>
